@@ -1,9 +1,7 @@
 #pragma once
-#pragma once
 #include <string>
 #include "date.h"
-#include "human1.h"
-#include "player.h"
+
 class tenant { //Класс арендатор
 
 private:
@@ -14,6 +12,24 @@ private:
 
 	std::string patronymic; //отчество
 
+
+	//static int password; // статистическое поле данных администратора
+
+private:
+	static int quantityA; // статистическое поле кол-ва администраторов на месте
+public:
+	tenant(std::string name, std::string surname, std::string patronymic) {
+		this->name = name;
+		this->surname = surname;
+		this->patronymic = patronymic;
+		quantityA++;
+	}
+
+	static int GetCount() { // статистический метод
+
+		return quantityA;
+	}
+
 	date tntD; //связка с классом дата
 
 public:
@@ -23,7 +39,5 @@ public:
 	void enter(); //Метод ввода
 
 	void print(); //Метод вывода
-	
-	
 
 };
